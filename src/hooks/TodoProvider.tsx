@@ -20,6 +20,10 @@ export const TodoProvider = ({ children }: any) => {
       return alert("Please enter a todo");
     }
 
+    if (todos.find((item) => item.text === todo)) {
+      return alert("Todo already exists");
+    }
+
     setTodos([...todos, { text: todo, complete: false, createdAt: new Date().toLocaleString() }]);
     setTodo("");
     localStorage.setItem("todos", JSON.stringify([...todos, { text: todo, complete: false }]));
